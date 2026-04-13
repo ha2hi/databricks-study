@@ -58,19 +58,19 @@ run_response = w.jobs.run_now(
 )
 print(f"Job B 트리거 완료! Run ID: {run_response.bind()['run_id']}")
 
-### 3.2. Job B: 워크플로우 설정 (UI)
+### 3.2. Job B: 워크플로우 설정 (UI)  
 Job B 화면에서 아래 순서대로 설정합니다.
 # 1. Job Parameter 정의: Job B 화면 우측 Job details > Edit parameters에서 Key: input_rows_array, Value: [] 추가
 
-# 2. For each 태스크 생성:
+# 2. For each 태스크 생성:  
 - Type: For each
 - Inputs: {{job.parameters.input_rows_array}}
 
-# 3.내부 작업 태스크 매핑: For each 태스크 안에 실제 작업용 노트북 태스크를 추가하고, 하단 Parameters 설정에 매핑
+# 3.내부 작업 태스크 매핑: For each 태스크 안에 실제 작업용 노트북 태스크를 추가하고, 하단 Parameters 설정에 매핑  
 - target_id : {{input.user_id}}
 - target_item : {{input.item}}
 
-### 3.3. Job B: 작업 실행 결과 확인 (Python)
+### 3.3. Job B: 작업 실행 결과 확인 (Python)  
 ```python
 # 1. 태스크 파라미터 가져오기
 user_id = dbutils.widgets.get("target_id")
